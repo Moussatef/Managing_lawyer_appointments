@@ -69,4 +69,16 @@ class Rendez
 
         return false;
     }
+    public function deleteRendez()
+    {
+        $req = "DELETE FROM rendezvous WHERE ID_Rend = ?";
+        $stmt = $this->conn->prepare($req);
+        if ($stmt->execute($this->ID_Rend))
+            return true;
+
+        // Print error if something goes wrong
+        printf("Error Delete Rendez vous: %s.\n", $stmt->error);
+
+        return false;
+    }
 }

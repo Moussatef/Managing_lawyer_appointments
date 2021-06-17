@@ -127,7 +127,7 @@ class User
             return true;
 
         // Print error if something goes wrong
-        printf("Error: %s.\n", $stmt->error);
+        printf("Error Update User: %s.\n", $stmt->error);
 
         return false;
     }
@@ -144,7 +144,7 @@ class User
             return true;
 
         // Print error if something goes wrong
-        printf("Error: %s.\n", $stmt->error);
+        printf("Error Delete User: %s.\n", $stmt->error);
 
         return false;
     }
