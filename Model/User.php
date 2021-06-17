@@ -98,7 +98,7 @@ class User
             return true;
 
         // Print error if something goes wrong
-        printf("Error: %s %s %s.\n", $stmt1->error, $stmt2->error, $stmt3->error);
+        printf("Error insert User : %s %s %s.\n", $stmt1->error, $stmt2->error, $stmt3->error);
 
         return false;
     }
