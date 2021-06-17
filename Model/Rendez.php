@@ -49,4 +49,24 @@ class Rendez
 
         return false;
     }
+    public function updateRendez()
+    {
+        $req = "UPDATE  rendezvous 
+                SET Date_Rend = ?, ID_Journee = ?,  description = ? 
+                WHERE ID_Rend = ?";
+        $stmt = $this->conn->prepare($req);
+
+        $this->Date_Rend = htmlspecialchars(strip_tags($this->Date_Rend));
+        $this->ID_Journee = htmlspecialchars(strip_tags($this->ID_Journee));
+        $this->description = htmlspecialchars(strip_tags($this->description));
+        $this->ID_Rend = htmlspecialchars(strip_tags($this->ID_Rend));
+
+        if ($stmt->execute([$this->Date_Rend, $this->ID_Journee, $this->description, $this->ID_Rend]))
+            return true;
+
+        // Print error if something goes wrong
+        printf("Error Update Rendez vous : %s.\n", $stmt->error);
+
+        return false;
+    }
 }
