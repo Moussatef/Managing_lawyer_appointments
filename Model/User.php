@@ -48,6 +48,8 @@ class User
         $this->NAME = $row['NAME'];
         $this->F_Name = $row['F_Name'];
         $this->EMAIL = $row['EMAIL'];
+
+        return $stmt->rowCount();
     }
     public function Insert_User()
     {

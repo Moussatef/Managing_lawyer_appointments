@@ -10,6 +10,8 @@ class Rendez
     public $ID_Journee;
     public $description;
     public $ID_USER;
+    public $Time_IN;
+    public $Time_TO;
 
     // Constructor with DB
     public function __construct($db)
@@ -20,7 +22,7 @@ class Rendez
     public function get_Rendez()
     {
         // Create query
-        $req = "SELECT * FROM rendezvous r ";
+        $req = "SELECT * FROM rendezvous r INNER JOIN journee j ON j.ID_Journee = r.ID_Journee";
         // Prepare statement
         $stmt = $this->conn->prepare($req);
         // Execute query
@@ -33,7 +35,7 @@ class Rendez
         $req = "INSERT INTO rendezvous 
                 SET Date_Rend =? , 
                 ID_Journee = ? ,
-                descreption = ? ,
+                description = ? ,
                 ID_USER = ?";
         $this->Date_Rend = htmlspecialchars(strip_tags($this->Date_Rend));
         $this->ID_Journee = htmlspecialchars(strip_tags($this->ID_Journee));

@@ -14,7 +14,7 @@ $db = $database->conx();
 
 $Rendez = new Rendez($db);
 
-$result = $User->get_Rendez();
+$result = $Rendez->get_Rendez();
 
 $num = $result->rowCount();
 
@@ -27,7 +27,8 @@ if ($num > 0) {
         $Rendez_item = array(
             'ID_Rend' => $ID_Rend,
             'Date_Rend' => $Date_Rend,
-            'ID_Journee' => $ID_Journee,
+            'Time_IN' => $Time_IN,
+            'Time_TO' => $Time_TO,
             'description' => $description,
             'ID_USER' => $ID_USER
         );
