@@ -31,18 +31,10 @@ $date1 = new DateTime($Rendez->Date_Rend);
 $date2 =  Date("Y-m-d");
 
 // Compare the dates
-if ($date1 > $date2) {
-    // echo $date1->format("Y-m-d") . " is latest than "
-    //         . $date2->format("Y-m-d");
-    // echo json_encode(
-    //     array('message date 1' => $date1->format("Y-m-d") . "  Date sys  "
-    //         . $date2)
-    // );
-
+if ($date1->format("Y-m-d") >= $date2) {
     if ($Rendez->UpdateRendez()) {
         echo json_encode(
-            array('message date 1' => $date1->format("Y-m-d") . "  Date sys  "
-                . $date2)
+            array('message date 1' =>   "  Rendez  Updated  " . $date2)
         );
     } else {
         echo json_encode(
