@@ -43,6 +43,7 @@ class Rendez
         $this->ID_USER = htmlspecialchars(strip_tags($this->ID_USER));
 
         $stmt = $this->conn->prepare($req);
+
         if ($stmt->execute([$this->Date_Rend, $this->ID_Journee, $this->description, $this->ID_USER]))
             return true;
 
