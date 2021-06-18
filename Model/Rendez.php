@@ -7,9 +7,9 @@ class Rendez
     public $Ref;
     public $ID_Rend;
     public $Date_Rend;
-    public $ID_Journee;
     public $description;
     public $ID_USER;
+    public $ID_Journee;
     public $Time_IN;
     public $Time_TO;
 
@@ -83,5 +83,19 @@ class Rendez
         printf("Error Delete Rendez vous: %s.\n", $stmt->error);
 
         return false;
+    }
+    public function getDateRendezDispo()
+    {
+        $req = "SELECT * 
+            from journee
+             WHERE ID_Journee not in
+                                (SELECT ID_Journee FROM rendezvous WHERE Date_Rend = ?)";
+        $stmt = $this->conn->prepare($req);
+        $this->Date_Rend = htmlspecialchars(strip_tags($this->Date_Rend));
+        $date1 = new DateTime($this->Date_Rend);
+
+        $stmt->execute([$date1->format('Y-m-d')]);
+
+        return $stmt;
     }
 }
