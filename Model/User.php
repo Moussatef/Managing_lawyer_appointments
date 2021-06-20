@@ -89,7 +89,7 @@ class User
 
         $this->ID_USER = $row['ID_USER'];
         $ref_contat = $row['ID_USER'] . strtoupper($this->NAME) . strtoupper($this->F_Name) . date("Ymd");
-        $this->Ref = $ref_contat . password_hash($ref_contat, PASSWORD_DEFAULT);
+        $this->Ref =  password_hash($ref_contat, PASSWORD_DEFAULT);
 
         $stmt3 = $this->conn->prepare($req3);
 
@@ -97,7 +97,7 @@ class User
             $cmp++;
 
         if ($cmp === 3)
-            return true;
+            return $this->Ref;
 
         // Print error if something goes wrong
         printf("Error insert User : %s %s %s.\n", $stmt1->error, $stmt2->error, $stmt3->error);

@@ -40,17 +40,8 @@ class Rendez
         $this->ID_USER = htmlspecialchars(strip_tags($this->ID_USER));
         // Execute query
         $stmt->execute([$this->ID_USER]);
-
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
         // Set properties
-        $this->ID_Rend = $row['ID_Rend'];
-        $this->Date_Rend = $row['Date_Rend'];
-        $this->Time_IN = $row['Time_IN'];
-        $this->Time_TO = $row['Time_TO'];
-        $this->description = $row['description'];
-
-        return $stmt->rowCount();
+        return $stmt;
     }
     public function insertRendez()
     {

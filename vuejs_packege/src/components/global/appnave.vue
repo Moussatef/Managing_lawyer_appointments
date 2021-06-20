@@ -26,7 +26,7 @@
               <router-link to="/register"><a class="nav-link">Register</a></router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/ProfilUser"><a class="nav-link">Profile</a></router-link>
+              <router-link to="/profil"><a class="nav-link">Profile</a></router-link>
             </li>
           </ul>
         </div>

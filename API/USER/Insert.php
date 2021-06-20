@@ -25,8 +25,10 @@ $User->EMAIL = $data->EMAIL;
 
 // Create post
 if ($User->Insert_User()) {
+    $ref = $User->Ref;
     echo json_encode(
-        array('message' => 'User Created')
+        array('message' => 'User Created ',
+                'Ref' => 'your Reference for login : '.$ref)
     );
 } else {
     echo json_encode(

@@ -20,12 +20,16 @@ $User->Ref = $data->Ref;
 
 // die(print_r($_GET['Ref']));
 $User->get_User();
-
-$User_item = array(
-    'ID_USER' => $User->ID_USER,
-    'NAME' => $User->NAME,
-    'F_Name' => $User->F_Name,
-    'EMAIL' => $User->EMAIL,
-    'Ref' => $User->Ref
+if (!empty($User->ID_USER)) {
+    $User_item = array(
+        'ID_USER' => $User->ID_USER,
+        'NAME' => $User->NAME,
+        'F_Name' => $User->F_Name,
+        'EMAIL' => $User->EMAIL,
+        'Ref' => $User->Ref
+    );
+    echo json_encode($User_item);
+}else
+echo json_encode(
+    array('ID_USER' => null)
 );
-echo json_encode($User_item);
