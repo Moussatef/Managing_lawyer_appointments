@@ -30,6 +30,28 @@ class Rendez
 
         return $stmt;
     }
+    public function get_Rendez_User()
+    {
+        // Create query
+        $req = "SELECT * FROM rendezvous r INNER JOIN journee j ON j.ID_Journee = r.ID_Journee INNER JOIN user u ON u.ID_USER = r.ID_USER where r.ID_USER =?";
+        // Prepare statement
+        $stmt = $this->conn->prepare($req);
+
+        $this->ID_USER = htmlspecialchars(strip_tags($this->ID_USER));
+        // Execute query
+        $stmt->execute([$this->ID_USER]);
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Set properties
+        $this->ID_Rend = $row['ID_Rend'];
+        $this->Date_Rend = $row['Date_Rend'];
+        $this->Time_IN = $row['Time_IN'];
+        $this->Time_TO = $row['Time_TO'];
+        $this->description = $row['description'];
+
+        return $stmt->rowCount();
+    }
     public function insertRendez()
     {
         $req = "INSERT INTO rendezvous 

@@ -88,8 +88,8 @@ class User
         $row = $stmt2->fetch(PDO::FETCH_ASSOC);
 
         $this->ID_USER = $row['ID_USER'];
-
-        $this->Ref = $row['ID_USER'] . strtoupper($this->NAME) . strtoupper($this->F_Name) . date("Ymd");
+        $ref_contat = $row['ID_USER'] . strtoupper($this->NAME) . strtoupper($this->F_Name) . date("Ymd");
+        $this->Ref = $ref_contat . password_hash($ref_contat, PASSWORD_DEFAULT);
 
         $stmt3 = $this->conn->prepare($req3);
 

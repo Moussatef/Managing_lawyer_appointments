@@ -26,24 +26,32 @@ $Rendez->Date_Rend = $data->Date_Rend;
 $Rendez->ID_Journee = $data->ID_Journee;
 $Rendez->description = $data->description;
 $Rendez->ID_Rend = $data->ID_Rend;
-// $User->Ref = $data->Ref;
+$User->Ref = $data->Ref;
 $date1 = new DateTime($Rendez->Date_Rend);
 $date2 =  Date("Y-m-d");
 
-// Compare the dates
-if ($date1->format("Y-m-d") >= $date2) {
-    if ($Rendez->UpdateRendez()) {
-        echo json_encode(
-            array('message date 1' =>   "  Rendez  Updated  " . $date2)
-        );
+//check referance user
+$num =  $User->get_User();
+if ($num)
+    // Compare the dates
+    if ($date1->format("Y-m-d") >= $date2) {
+        if ($Rendez->UpdateRendez()) {
+            echo json_encode(
+                array('message date 1' =>   "  Rendez  Updated  " . $date2)
+            );
+        } else {
+            echo json_encode(
+                array('message' => 'Rendez Not Updated')
+            );
+        }
     } else {
         echo json_encode(
-            array('message' => 'Rendez Not Updated')
+            array('message date must be  future than now' => $date1->format("Y-m-d") . " is older than "
+                . $date2)
         );
     }
-} else {
+else {
     echo json_encode(
-        array('message date must be  future than now' => $date1->format("Y-m-d") . " is older than "
-            . $date2)
+        array('message' => 'Error in  Referance')
     );
 }

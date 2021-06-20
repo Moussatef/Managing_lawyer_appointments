@@ -1,11 +1,18 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <appnave/>
   </div>
   <router-view/>
 </template>
-
+<script>
+import Appnave from './components/global/appnave.vue'
+export default {
+  name: 'nav',
+  components: {
+    Appnave
+  }
+}
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -21,6 +28,7 @@
   a {
     font-weight: bold;
     color: #2c3e50;
+    text-decoration: none;
 
     &.router-link-exact-active {
       color: #42b983;
