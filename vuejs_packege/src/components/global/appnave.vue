@@ -26,6 +26,9 @@
               <router-link to="/register"><a class="nav-link">Register</a></router-link>
             </li>
             <li class="nav-item">
+              <router-link to="/reservation"><a class="nav-link">Reservation</a></router-link>
+            </li>
+            <li class="nav-item">
               <router-link to="/profil"><a class="nav-link">Profile</a></router-link>
             </li>
           </ul>
