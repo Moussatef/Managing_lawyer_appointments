@@ -22,9 +22,9 @@
         </div>
         
         <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="btn btn-primary" id="btn" @click="send_rendez" type="button" v-if="cmp >= 3" >Réserver</button>
+            <button class="btn btn-primary" id="btn" @click="send_rendez" type="button" v-if="cmp" >Réserver</button>
         </div>
-        <h3>{{date}}  id journee : {{id_journee}}   cmp {{cmp}}</h3>
+        <h3>{{Refe}}  id journee : {{id_journee}}   //// {{id_user}}   {{inp_decs}}  {{inp_decs}}</h3>
     </div>
 </template>
 <script>
@@ -119,17 +119,16 @@ export default {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            'Date_Rend': this.Date_Rend,
+            'Date_Rend': this.date,
             'ID_Journee': this.id_journee,
+            'ID_USER':this.id_user,
             'description': this.desc,
-            'ID_USER':this.id_user
+            'Ref': this.ref
           })
         })
       if (res.status === 200) {
         const result = await res.json()
         if (result) {
-          this.user = result
-          this.id_user = result.ID_USER
           console.log(result)
         }
       }
