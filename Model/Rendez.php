@@ -76,6 +76,7 @@ class Rendez
         $this->ID_Journee = htmlspecialchars(strip_tags($this->ID_Journee));
         $this->description = htmlspecialchars(strip_tags($this->description));
         $this->ID_Rend = htmlspecialchars(strip_tags($this->ID_Rend));
+        $this->ID_USER = htmlspecialchars(strip_tags($this->ID_USER));
 
         if ($stmt->execute([$this->Date_Rend, $this->ID_Journee, $this->description, $this->ID_Rend]))
             return true;
@@ -99,16 +100,21 @@ class Rendez
     }
     public function getDateRendezDispo()
     {
-        $req = "SELECT * 
-            from journee
-             WHERE ID_Journee not in
-                                (SELECT ID_Journee FROM rendezvous WHERE Date_Rend = ?)";
-        $stmt = $this->conn->prepare($req);
+        $req1 = "SELECT * FROM rendezvous WHERE Date_Rend =?  and ID_USER = ?";
+        $req = "SELECT * FROM journee j 
+                WHERE j.ID_Journee not in (SELECT ID_Journee FROM rendezvous WHERE Date_Rend =?) 
+         ";
+        $stmt1 = $this->conn->prepare($req1);
         $this->Date_Rend = htmlspecialchars(strip_tags($this->Date_Rend));
         $date1 = new DateTime($this->Date_Rend);
-
-        $stmt->execute([$date1->format('Y-m-d')]);
-
-        return $stmt;
+        $stmt1->execute([$date1->format('Y-m-d'), $this->ID_USER]);
+        $numRow = $stmt1->rowCount();
+        if ($numRow) {
+            return false;
+        } else {
+            $stmt = $this->conn->prepare($req);
+            $stmt->execute([$date1->format('Y-m-d')]);
+            return $stmt;
+        }
     }
 }

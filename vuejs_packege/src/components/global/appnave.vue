@@ -20,16 +20,19 @@
               <router-link to="/"><a class="nav-link">Home</a></router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/about"><a class="nav-link">About</a></router-link>
+              <router-link to="/about" v-if="0 != 0" ><a class="nav-link">About</a></router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/register"><a class="nav-link">Register</a></router-link>
+              <router-link v-if="!Reference" to="/register"><a class="nav-link">Register</a></router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/reservation"><a class="nav-link">Reservation</a></router-link>
+              <router-link v-if="Reference" to="/reservation"><a class="nav-link">Reservation</a></router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/profil"><a class="nav-link">Profile</a></router-link>
+              <router-link v-if="Reference" to="/profil"><a class="nav-link">Profile</a></router-link>
+            </li>
+            <li class="nav-item">
+              <router-link v-if="!Reference" to="/login"><a class="nav-link">Login</a></router-link>
             </li>
           </ul>
         </div>
@@ -38,7 +41,25 @@
   </header>
 </template>
 <script>
+// location.reload(); 
 export default {
-  name: 'appnave'
+  name: 'appnave',
+  data() {
+    return{
+      Reference: localStorage.getItem("user_ref"),
+      cmp:0
+
+    }
+  },
+  watch: {
+    Reference : function(value){
+      if(value.length > 1){
+        this.cmp = value.length 
+      }
+      else 
+      this.cmp = 0
+    }
+  }
+
 }
 </script>

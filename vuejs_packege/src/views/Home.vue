@@ -25,17 +25,7 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <svg
-            class="bd-placeholder-img"
-            width="100%"
-            height="100%"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-            <rect width="100%" height="100%" fill="#777" />
-          </svg>
+          <img src="./../assets/p6.jpg" class="responsive_img" alt="" />
 
           <div class="container">
             <div class="carousel-caption text-start">
@@ -51,17 +41,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <svg
-            class="bd-placeholder-img"
-            width="100%"
-            height="100%"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-            <rect width="100%" height="100%" fill="#777" />
-          </svg>
+          <img src="./../assets/p7.jpg" class="responsive_img" alt="" />
 
           <div class="container">
             <div class="carousel-caption">
@@ -75,17 +55,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <svg
-            class="bd-placeholder-img"
-            width="100%"
-            height="100%"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-            <rect width="100%" height="100%" fill="#777" />
-          </svg>
+         <img src="./../assets/p5.jpg" class="responsive_img" alt="" />
 
           <div class="container">
             <div class="carousel-caption text-end">
@@ -129,7 +99,7 @@
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-4 mt-3">
-          <img class="cyrcel" src="./../assets/p44.jpg" alt="">
+          <img class="cyrcel" src="./../assets/p44.jpg" alt="" />
           <h2>Heading</h2>
           <p>
             Some representative placeholder content for the three columns of
@@ -141,7 +111,7 @@
         </div>
         <!-- /.col-lg-4 -->
         <div class="col-lg-4 mt-5">
-          <img class="cyrcel" src="./../assets/p44.jpg" alt="">
+          <img class="cyrcel" src="./../assets/p44.jpg" alt="" />
 
           <h2>Heading</h2>
           <p>
@@ -154,7 +124,7 @@
         </div>
         <!-- /.col-lg-4 -->
         <div class="col-lg-4 mt-3">
-          <img class="cyrcel" src="./../assets/p44.jpg" alt="">
+          <img class="cyrcel" src="./../assets/p44.jpg" alt="" />
 
           <h2>Heading</h2>
           <p>
@@ -186,7 +156,7 @@
         </div>
         <div class="col-md-5">
           <!-- <rect width="100%" height="100%" fill="#eee" /> -->
-          <img class="cadre" src="./../assets/p1.jpg" alt="">
+          <img class="cadre" src="./../assets/p1.jpg" alt="" />
         </div>
       </div>
 
@@ -205,7 +175,7 @@
           </p>
         </div>
         <div class="col-md-5 order-md-1">
-          <img class="cadre" src="./../assets/p3.jpg" alt="">
+          <img class="cadre" src="./../assets/p3.jpg" alt="" />
         </div>
       </div>
 
@@ -224,7 +194,7 @@
           </p>
         </div>
         <div class="col-md-5">
-          <img class="cadre" src="./../assets/p2.jpg" alt="">
+          <img class="cadre" src="./../assets/p2.jpg" alt="" />
         </div>
       </div>
 
@@ -239,24 +209,33 @@
 
 <script>
 // @ is an alias to /src
-import appfooter from '@/components/global/appfooter.vue'
+import appfooter from "@/components/global/appfooter.vue";
 
+// for (let index = 0; index <= 1; index++) {
+//   // location.reload();
+// }
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     appfooter
   }
-}
+  // mount () {
+  //   location.reload();
+  // }
+};
 </script>
 
 <style lang="scss" scoped>
-.cadre{
+.responsive_img {
+  width: 100%;
+  height: 700px;
+}
+.cadre {
   width: 100%;
   height: 100%;
 }
-.cyrcel{
-    width: 150px;
-    height: 150px;
-  
+.cyrcel {
+  width: 150px;
+  height: 150px;
 }
 </style>

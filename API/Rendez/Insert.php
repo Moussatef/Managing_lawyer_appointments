@@ -29,21 +29,19 @@ $User->Ref = $data->Ref;
 
 //chack referance
 $num =  $User->get_User();
-if ($num)
+if ($num > 0)
     // Create post
     if ($Rendez->InsertRendez()) {
         echo json_encode(
-            array('message' => 'Rendez Created')
+            array('message' => 'Meeting Created')
         );
     } else {
         echo json_encode(
-            array('message' => 'Rendez Not Created')
+            array('message' => 'Meeting is Not Created')
         );
     }
-else
+else {
     echo json_encode(
-        array(
-            'message' => 'Referance Not Fonde',
-            'numRow ' => $num
-        )
+        array('message' => 'Meeting is Not Created')
     );
+}
